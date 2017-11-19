@@ -1,12 +1,12 @@
 <?php
 
-// change the path to the actual existing path
-require_once('FULL PATH HERE/db-init.php');
+// change the path to the actual path
+require_once('PATH_HERE/db-init.php');
 
 function  addDataToMysql($jsonFile) {
         $authdata = "";
         $logindata = "";
-        $path = fopen($jsonFile, "wr");
+        $path = fopen($jsonFile, "r");
         if ($path) {
                 while(($line = fgets($path)) !== false) {
                         $output = json_decode($line);
@@ -21,7 +21,6 @@ function  addDataToMysql($jsonFile) {
                                 $authdata .= $password ." ". $username ."\n";
                         }
                 }
-                fwrite($path, "");
                 fclose($path);
         } else {
                 echo "Error, file not found";
@@ -29,31 +28,38 @@ function  addDataToMysql($jsonFile) {
         return array($logindata, $authdata);
 }
 
+$jsonfile = "cowrie.json";
 
-list($logindata, $authdata) = addDataToMysql("cowrie.json");
+list($logindata, $authdata) = addDataToMysql($jsonfile);
+
+$emptyjson = fopen($jsonfile, "w")
+        or die("Can't open file");
+fwrite($emptyjson, "");
+fclose($emptyjson);
+
 $logindata_array = explode("\n", $logindata);
 $authdata_array = explode("\n", $authdata);
 
-echo $logindata_array;
-echo $authdata_array;
-
-foreach($logindata_array as $key=>$value) {
-        $values = explode(" ", $value);
-        $sourceIp = $values[0];
-        $timestamp = $values[1];
-        $sql = "INSERT INTO logindata (srcip, timestamp) VALUES ('$sourceIp', '$timestamp')";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
+if (!empty($logindata_array[0])) {
+        foreach($logindata_array as $key=>$value) {
+                $values = explode(" ", $value);
+                $sourceIp = $values[0];
+                $timestamp = $values[1];
+                $sql = "INSERT INTO logindata (srcip, timestamp) VALUES ('$sourceIp', '$timestamp')";
+                $stmt = $db->prepare($sql);
+                $stmt->execute();
+        }
 }
 
-
-foreach($authdata_array as $key=>$value) {
-        $values = explode(" ", $value);
-        $password = $values[0];
-        $username = $values[1];
-        $sql = "INSERT INTO authdata (username, password) VALUES ('$username', '$password')";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
+if(!empty($authdata_array[0])) {
+        foreach($authdata_array as $key=>$value) {
+                $values = explode(" ", $value);
+                $password = $values[0];
+                $username = $values[1];
+                $sql = "INSERT INTO authdata (username, password) VALUES ('$username', '$password')";
+                $stmt = $db->prepare($sql);
+                $stmt->execute();
+        }
 }
 
 ?>
