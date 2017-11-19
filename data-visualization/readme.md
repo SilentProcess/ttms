@@ -8,7 +8,8 @@ after you should be able to run it simply by:
 npm install
 npm run
 ```
-if it doesn't work by now, run ´´´npm install webpack´´´
+if it doesn't work by now, run 
+```npm install webpack```
 
 this will debloy test version hosted locally  
 to host it in internet you need to build it  
