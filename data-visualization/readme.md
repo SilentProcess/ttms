@@ -11,7 +11,7 @@ npm run
 if it doesn't work by now, run 
 ```npm install webpack```
 
-this will debloy test version hosted locally  
+this will deploy test version hosted locally  
 to host it in internet you need to build it  
 ```
 npm run build
