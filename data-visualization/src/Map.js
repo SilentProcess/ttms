@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
 import './Map.css';
-var markerSVG = "M-5,0a5,5 0 1,0 10,0a10,10 0 1,0 -10,0";
-function generateData() {
-  var dataProvider="JSON mis data";
+import axios from 'axios';
 
-  return dataProvider;
-}
 class Map extends Component {
   constructor(props) {
     super(props);
+		this.state = {
+         dataProvider: [],
+   }
+   axios.get('./map.json') 
+    .then(res => {
+        this.setState({ dataProvider: res.data });  
+		console.log(this.state.dataProvider);
+   });
+   console.log(this.state.dataProvider);
 
-    this.state = {
-      dataProvider: generateData(),
-      timer: null
-    };
-  }
+}
 
-  componentDidMount() {
+componentDidMount() {
     this.setState({
-      // Update the chart dataProvider every 5 seconds
+      // Update the chart dataProvider every 3 seconds
       timer: setInterval(() => {
-        this.setState({
-          dataProvider: generateData()
-        });
-      }, 5000)
+        axios.get('./map.json') 
+			.then(res => {
+				this.setState({ dataProvider: res.data });  
+			console.log(this.state.dataProvider);
+		});
+      }, 30000)
     });
   }
 
@@ -49,52 +52,9 @@ render() {
     "unlistedAreasColor": "#15A892"
   },
 
-  "dataProvider": {
-    "map": "worldLow",
-    "images": [ {
-      "svgPath": markerSVG,
-      "zoomLevel": 5,
-      "scale": 0.5,
-      "title": "Vienna",
-      "latitude": 48.2092,
-      "longitude": 16.3728
-    }, {
-      "svgPath": markerSVG,
-      "zoomLevel": 5,
-      "scale": 0.5,
-      "title": "Minsk",
-      "latitude": 53.9678,
-      "longitude": 27.5766
-    }, {
-      "svgPath": markerSVG,
-      "zoomLevel": 5,
-      "scale": 0.5,
-      "title": "Brussels",
-      "latitude": 50.8371,
-      "longitude": 4.3676
-    }, {
-      "svgPath": markerSVG,
-      "zoomLevel": 5,
-      "scale": 0.5,
-      "title": "Sarajevo",
-      "latitude": 43.8608,
-      "longitude": 18.4214
-    }, {
-      "svgPath": markerSVG,
-      "zoomLevel": 5,
-      "scale": 0.5,
-      "title": "Sofia",
-      "latitude": 42.7105,
-      "longitude": 23.3238
-    }, {
-      "svgPath": markerSVG,
-      "zoomLevel": 5,
-      "scale": 0.5,
-      "title": "Zagreb",
-      "latitude": 45.8150,
-      "longitude": 15.9785
-    } ]
-  }
+  "dataProvider": this.state.dataProvider
+
+
 };
 
 // add events to recalculate map position when the map is moved or zoomed
