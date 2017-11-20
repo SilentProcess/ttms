@@ -1,6 +1,5 @@
 <?php
 
-// change the path to the actual path
 require_once('PATH_HERE/db-init.php');
 
 function  addDataToMysql($jsonFile) {
@@ -28,7 +27,7 @@ function  addDataToMysql($jsonFile) {
         return array($logindata, $authdata);
 }
 
-$jsonfile = "cowrie.json";
+$jsonfile = "cowrie2.json";
 
 list($logindata, $authdata) = addDataToMysql($jsonfile);
 
@@ -45,9 +44,11 @@ if (!empty($logindata_array[0])) {
                 $values = explode(" ", $value);
                 $sourceIp = $values[0];
                 $timestamp = $values[1];
-                $sql = "INSERT INTO logindata (srcip, timestamp) VALUES ('$sourceIp', '$timestamp')";
-                $stmt = $db->prepare($sql);
-                $stmt->execute();
+                if($timestamp !== "" and $sourceIp !== "") {
+                        $sql = "INSERT INTO logindata (srcip, timestamp) VALUES ('$sourceIp', '$timestamp')";
+                        $stmt = $db->prepare($sql);
+                        $stmt->execute();
+                }
         }
 }
 
@@ -56,10 +57,13 @@ if(!empty($authdata_array[0])) {
                 $values = explode(" ", $value);
                 $password = $values[0];
                 $username = $values[1];
-                $sql = "INSERT INTO authdata (username, password) VALUES ('$username', '$password')";
-                $stmt = $db->prepare($sql);
-                $stmt->execute();
+                if($username !== "") {
+                        $sql = "INSERT INTO authdata (username, password) VALUES ('$username', '$password')";
+                        $stmt = $db->prepare($sql);
+                        $stmt->execute();
+                }
         }
 }
 
 ?>
+~
