@@ -1,50 +1,39 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
 import './App.css';
-
+import axios from 'axios';
 
 // Generate random data
-function generateData() {
-  var firstDate = new Date();
-
-  var dataProvider = [];
-
-  for (var i = 0; i < 100; ++i) {
-    var date = new Date(firstDate.getTime());
-
-    date.setDate(i);
-
-    dataProvider.push({
-      date: date,
-      value: Math.floor(Math.random() * 100)
-    });
-  }
-
-  return dataProvider;
-}
 
 
 // Component which contains the dynamic state for the chart
 class App extends Component {
   constructor(props) {
     super(props);
+		this.state = {
+         dataProvider: [],
+   }
+   axios.get('./test.json') 
+    .then(res => {
+        this.setState({ dataProvider: res.data });  
+		//console.log(this.state.dataProvider);
+   });
+  // console.log(this.state.dataProvider);
 
-    this.state = {
-      dataProvider: generateData(),
-      timer: null
-    };
-  }
+}
+
+
 
   componentDidMount() {
-	  this.refs.chart1.ignoreZoomed = false;
     this.setState({
       // Update the chart dataProvider every 3 seconds
       timer: setInterval(() => {
-        this.setState({
-          dataProvider: generateData(),
-		  ignoreZoomed: true
-        });
-      }, 3000)
+        axios.get('./test.json') 
+			.then(res => {
+				this.setState({ dataProvider: res.data });  
+	//	console.log(this.state.dataProvider);
+   });
+      }, 15000)
     });
   }
 
@@ -55,6 +44,7 @@ class App extends Component {
   }
 
   render() {
+	  
     const config = {
       "type": "serial",
       "theme": "light",
