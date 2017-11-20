@@ -9,5 +9,5 @@ try {
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $status = $db->getAttribute(PDO::ATTR_CONNECTION_STATUS);
-echo $status;
+//echo $status;
 ?>
