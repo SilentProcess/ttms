@@ -1,0 +1,48 @@
+{
+	"map": "worldLow",
+    "images": [ {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Hesa",
+      "latitude": 60.192059,
+      "longitude": 24.945831,
+	  "type": "circle"
+
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Minsk",
+      "latitude": 53.9678,
+      "longitude": 27.5766,
+	  "type": "circle"
+
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Brussels",
+      "latitude": 50.8371,
+      "longitude": 4.3676,
+	  "type": "circle"
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Sarajevo",
+      "latitude": 43.8608,
+      "longitude": 18.4214,
+	  "type": "circle"
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Sofia",
+      "latitude": 42.7105,
+      "longitude": 23.3238,
+	  "type": "circle"
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Zagreb",
+      "latitude": 45.8150,
+      "longitude": 15.9785,
+	  "type": "circle"
+    } ]
+	}
