@@ -1,5 +1,5 @@
 <?php
-
+//THIS FILE IN NO LONGER USED AT ALL WE USE COWRIES OWN MYSQL FUNCTIONALITY INSTEAD
 require_once('PATH_HERE/db-init.php');
 
 function  addDataToMysql($jsonFile) {
