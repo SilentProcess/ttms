@@ -32,3 +32,21 @@ h1{
 	text-align: center;
 	color:#f9baff;
 }
+#radar {
+  width: 500px;
+  height: 400px;
+}		
+.Radar {
+	padding-top:50px;
+  width: 500px;
+  height: 100%;
+}		
+.Map {
+flex-grow: 1;
+}
+.App {
+  flex-grow: 1;
+}
+.container{
+    display:flex;
+}
