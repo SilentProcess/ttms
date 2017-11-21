@@ -6,8 +6,8 @@ function getLoginAttempts($localdb) {
         $attempts = array();
         $query = <<<SQL
         SELECT
-        `logindata`.`timestamp`
-        FROM `logindata`
+        `sessions`.`starttime`
+        FROM `sessions`
 SQL;
 
         $loginattempts = $localdb->prepare($query);
@@ -25,7 +25,7 @@ $attempts = getLoginAttempts($db);
 $timestamparray = array();
 
 foreach ($attempts as $attempt) {
-        $stringArray = explode("T", $attempt['timestamp']);
+        $stringArray = explode(" ", $attempt['starttime']);
         $stringval = $stringArray[0];
         $timestamparray[] = $stringval;
 }
@@ -71,4 +71,3 @@ if (!empty($attempts)) {
 echo $response;*/
 
 ?>
-
