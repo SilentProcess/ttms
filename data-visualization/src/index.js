@@ -12,3 +12,7 @@ ReactDOM.render(
   <Map />,
   document.getElementById('map')
 );
+ReactDOM.render(
+  <Radar />,
+  document.getElementById('radar')
+);
