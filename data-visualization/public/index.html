@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script src="https://www.amcharts.com/lib/3/radar.js"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
 	<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
@@ -20,14 +19,18 @@
 	<section>
 	<p>Tääl o kaikennäköst</p>
 	</section>
+	<div class="container">
     <div id="root"></div>
+	</div>
 	<section>
 	<p>Statteja honeypotista</p>
 	</section>
+	<div class="container">
 	<div id="map"></div>
+	</div>
 	<section>
 	<p>Kartta IP-osoitteista</p>
 	</section>
-
+	<div id="radar"></div>
   </body>
 </html>
