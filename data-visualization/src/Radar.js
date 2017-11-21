@@ -48,9 +48,9 @@ render() {
     "balloonText": "[[value]] Attempts",
     "bullet": "round",
     "lineThickness": 2,
-    "valueField": "litres"
+    "valueField": "attempts"
   } ],
-  "categoryField": "country",
+  "categoryField": "usernames",
 
 }
 
