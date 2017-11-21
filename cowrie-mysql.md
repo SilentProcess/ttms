@@ -28,3 +28,13 @@ mysql -u cowrie -p
 > source ./doc/sql/mysql.sql;
 > exit
 ```
+###### Make the necessary changes to cowrie.cfg
+```
+[output_mysql]
+host = localhost
+database = cowrie
+username = cowrie
+password = YOUR PASSWORD HERE
+port = 3306
+debug = false
+```
