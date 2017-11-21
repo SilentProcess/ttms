@@ -50,7 +50,7 @@ render() {
     "lineThickness": 2,
     "valueField": "attempts"
   } ],
-  "categoryField": "usernames",
+  "categoryField": "username",
 
 }
 
