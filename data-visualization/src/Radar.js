@@ -7,25 +7,36 @@ class Radar extends Component {
     super(props);
 		this.state = {
          dataProvider: [],
+		 dataProvider2: [],
    }
-   axios.get('./radar.json') 
-    .then(res => {
-        this.setState({ dataProvider: res.data });  
-		console.log(this.state.dataProvider);
-   });
+   axios.all([
+    axios.get('/radar.json'),
+    axios.get('/radar2.json')
+  ])
+    .then(axios.spread((radar,radar2) => {
+        this.setState({ dataProvider: radar.data,
+						dataProvider2: radar2.data})
+						console.log(this.state.dataProvider);
+						console.log(this.state.dataProvider2);
+
+   }))
    //console.log(this.state.dataProvider);
 
 }
 
 componentDidMount() {
     this.setState({
-      // Update the chart dataProvider every 3 seconds
+      // Update the chart dataProvider every 30 seconds
       timer: setInterval(() => {
-        axios.get('./radar.json') 
-			.then(res => {
-				this.setState({ dataProvider: res.data });  
-			console.log(this.state.dataProvider);
-		});
+        axios.all([
+    axios.get('/radar.json'),
+    axios.get('/radar2.json')
+  ])
+	.then(axios.spread((radar,radar2) => {
+        this.setState({ dataProvider: radar.data,
+						dataProvider2: radar2.data})
+
+		}))
       }, 30000)
     });
   }
@@ -51,16 +62,46 @@ render() {
     "valueField": "attempts"
   } ],
   "categoryField": "username",
+   "titles": [
+		{
+			"text": "Käyttäjätunnukset",
+			"size": 15
+		}]
+
+}
+ const config2 = {
+	"type": "radar",
+  "theme": "dark",
+  "dataProvider": this.state.dataProvider2,
+  "valueAxes": [ {
+    "axisTitleOffset": 20,
+    "minimum": 0,
+    "axisAlpha": 0.15
+  } ],
+  "startDuration": 2,
+  "graphs": [ {
+    "balloonText": "[[value]] Attempts",
+    "bullet": "round",
+    "lineThickness": 2,
+    "valueField": "attempts",
+  } ],
+  "categoryField": "password",
+  "titles": [
+		{
+			"text": "Salasanat",
+			"size": 15,
+			"color": "white"
+		}]
 
 }
 
-// add events to recalculate map position when the map is moved or zoomed
-
 
  return (
-      <div className="Radar">
+      <div className="container">
         <AmCharts.React style={{ width: "500px", height: "400px" }} options={config} />
+		<AmCharts.React style={{ width: "500px", height: "400px" }} options={config2} />
       </div>
+	  
     );
   }
 }
