@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
-import './Map.css';
 import axios from 'axios';
 
 class Map extends Component {
@@ -12,9 +11,9 @@ class Map extends Component {
    axios.get('./map.json') 
     .then(res => {
         this.setState({ dataProvider: res.data });  
-		console.log(this.state.dataProvider);
+		//console.log(this.state.dataProvider);
    });
-   console.log(this.state.dataProvider);
+   //console.log(this.state.dataProvider);
 
 }
 
@@ -25,7 +24,7 @@ componentDidMount() {
         axios.get('./map.json') 
 			.then(res => {
 				this.setState({ dataProvider: res.data });  
-			console.log(this.state.dataProvider);
+			//console.log(this.state.dataProvider);
 		});
       }, 30000)
     });
@@ -52,7 +51,16 @@ render() {
     "unlistedAreasColor": "#15A892"
   },
 
-  "dataProvider": this.state.dataProvider
+  "dataProvider":{
+	  "map": "worldLow",
+	  "images": this.state.dataProvider
+	  
+  },
+	"titles": [
+		{
+			"text": "Kirjautumisyritykset kartalla",
+			"size": 15
+		}]  
 
 
 };
@@ -62,7 +70,7 @@ render() {
 
  return (
       <div className="Map">
-        <AmCharts.React style={{ width: "100%", height: "500px" }} options={config} />
+        <AmCharts.React style={{height: "500px" }} options={config} />
       </div>
     );
   }
