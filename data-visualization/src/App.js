@@ -47,7 +47,7 @@ class App extends Component {
 	  
     const config = {
       "type": "serial",
-      "theme": "light",
+      "theme": "dark",
       "marginRight": 40,
       "marginLeft": 40,
       "autoMarginOffset": 20,
@@ -117,7 +117,12 @@ class App extends Component {
         "dashLength": 1,
         "minorGridEnabled": true
       },
-      "dataProvider": this.state.dataProvider
+      "dataProvider": this.state.dataProvider,
+	  "titles": [
+		{
+			"text": "Kirjautumisyritykset/päivä",
+			"size": 15
+		}]  
 	  
     };
 	
@@ -126,7 +131,7 @@ class App extends Component {
     return (
       <div className="App">
         <AmCharts.React 
-		style={{ width: "100%", height: "350px" }} options={config} ref={'chart1'}
+		style={{width: "100%",height: "350px" }} options={config} ref={'chart1'}
 
 		/>
       </div>
