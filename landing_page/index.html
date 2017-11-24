@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="landing_page.css">
+</head>
+<body>
+	<div class="welcometext">
+		<div class="welcome">
+			<h1 class="greeting">WELCOME</h1>
+		</div>
+	</div>
+	
+	<div class="subtextdiv">
+		<div class="subtext">
+			<h3 class ="sub">Tähä joku iskulause</h3>
+		</div>
+	</div>
+
+	<div class="enter">
+		<button class="enterbutton" onclick="goToPage();">Enter</button>
+	</div>
+
+<footer>
+	<ul>
+		<li><a href="#">Amcharts</a></li>
+		<li><a href="#">GeoIP</a></li>
+		<li><a href="#">FreeDNS</a></li>
+		<li><a href="#">Github</a></li>
+	</ul>
+</footer>
+
+<script>
+function goToPage() {
+	var currentlocation = window.location.href;
+	window.location = currentlocation + "/build";
+}
+</script>
+</body>
+</html>
