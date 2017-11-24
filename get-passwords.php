@@ -2,7 +2,7 @@
 
 require_once('/home/httpserver/db-init.php');
 
-function getUserNames($localdb) {
+function getPassWords($localdb) {
         $passwords = array();
         $query = "SELECT password, COUNT(password) FROM auth GROUP BY password ORDER BY COUNT(password) DESC LIMIT 10";
         $queriedusernames = $localdb->prepare($query);
@@ -14,7 +14,7 @@ function getUserNames($localdb) {
         return $passwords;
 }
 
-$passwords = getUserNames($db);
+$passwords = getPassWords($db);
 //var_dump($passwords);
 
 $passwordarray = array();
