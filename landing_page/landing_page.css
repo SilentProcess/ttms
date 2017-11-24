@@ -4,7 +4,7 @@ html,body {
 }
 
 body {
-	background: url(map_light.png);
+	background: url(butt.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: century gothic,arial,sans-serif;
@@ -26,6 +26,7 @@ body {
 	height: 100%;
 	font-size: 128px;
 	letter-spacing: 8px;
+	color: #30303d;
 }
 
 .subtextdiv {
@@ -36,7 +37,7 @@ body {
 .subtext {
 	position: relative;
 	height: 200px;
-	border-bottom: solid 2px black;
+	border-bottom: solid 2px #30303d;
 }
 
 .sub {
@@ -45,6 +46,7 @@ body {
 	position: absolute;
 	height: 100%;
 	font-size: 28px;
+	color: #30303d;
 }
 
 .enter {
@@ -58,7 +60,7 @@ body {
 }
 
 .enterbutton {
-	background-color: black;
+	background-color: #30303d;
     color: white;
     padding: 30px 64px;
 	border: none;
@@ -101,7 +103,7 @@ footer {
 	height: 128px;
 	width: 100%;
     color: white;
-    background-color: black;
+    background-color: #30303d;
 	text-align: center;
 	/*border: 2px solid red;*/
 }
