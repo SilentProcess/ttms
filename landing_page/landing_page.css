@@ -1,12 +1,22 @@
 html,body {
-    margin:0;
-    padding:0;
+    	margin:0;
+    	padding:0;
+}
+
+
+#bg {
+    	position: absolute;
+    	top: 0;
+    	bottom: 0;
+    	left: 0;
+    	right: 0;
+	background-image: url(map_light.png);
 }
 
 body {
-	background: url(map_light.png);
+	/*background: url(map_light.png);
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover;*/
 	font-family: century gothic,arial,sans-serif;
 }
 .welcometext {
@@ -61,16 +71,16 @@ body {
 
 .enterbutton {
 	background-color: #30303d;
-    color: white;
-    padding: 30px 64px;
+    	color: white;
+    	padding: 30px 64px;
 	border: none;
 	border-radius: 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    margin: 4px 50px;
-    cursor: pointer;
+    	text-align: center;
+    	text-decoration: none;
+    	display: inline-block;
+    	font-size: 24px;
+    	margin: 4px 50px;
+    	cursor: pointer;
 	z-index: 1;
 	transition-duration: 0.4s;
 }
@@ -102,8 +112,8 @@ footer {
 	bottom: 0;
 	height: 128px;
 	width: 100%;
-    color: white;
-    background-color: #30303d;
+    	color: white;
+    	background-color: #30303d;
 	text-align: center;
 	/*border: 2px solid red;*/
 }
