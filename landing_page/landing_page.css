@@ -1,0 +1,107 @@
+html,body {
+    margin:0;
+    padding:0;
+}
+
+body {
+	background: url(map_light.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: century gothic,arial,sans-serif;
+}
+.welcometext {
+	width: 100%;
+	/*border: 2px solid black;*/
+}
+
+.welcome {
+	position: relative;
+	height: 256px;
+}
+
+.greeting {
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-size: 128px;
+	letter-spacing: 8px;
+}
+
+.subtextdiv {
+	width: 100%;
+	/*border: 2px solid blue;*/
+}
+
+.subtext {
+	position: relative;
+	height: 200px;
+	border-bottom: solid 2px black;
+}
+
+.sub {
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	height: 100%;
+	font-size: 28px;
+}
+
+.enter {
+	width: 100%;
+	height: 256px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+	/*border: 2px solid green;*/
+}
+
+.enterbutton {
+	background-color: black;
+    color: white;
+    padding: 30px 64px;
+	border: none;
+	border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 50px;
+    cursor: pointer;
+	z-index: 1;
+	transition-duration: 0.4s;
+}
+
+.enterbutton:hover {
+	background-color: #e8e8e8;
+	color: black;
+	border: 1px solid gray;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: inline;
+	padding-right: 64px;
+}
+
+li a {
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 24px;
+}
+	
+footer {
+	position: absolute;
+	bottom: 0;
+	height: 128px;
+	width: 100%;
+    color: white;
+    background-color: black;
+	text-align: center;
+	/*border: 2px solid red;*/
+}
