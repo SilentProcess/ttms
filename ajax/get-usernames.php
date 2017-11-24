@@ -1,6 +1,6 @@
 <?php
 
-require_once('/home/httpserver/db-init.php');
+require_once('YOUR_PATH_HERE/db-init.php');
 
 function getUserNames($localdb) {
         $usernames = array();
