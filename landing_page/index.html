@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="landing_page.css">
 </head>
-<body>
+<body onload="changeColor();">
+	<div id="bg"></div>
 	<div class="welcometext">
 		<div class="welcome">
 			<h1 class="greeting">WELCOME</h1>
@@ -13,7 +14,7 @@
 	
 	<div class="subtextdiv">
 		<div class="subtext">
-			<h3 class ="sub">Tähä joku iskulause</h3>
+			<h3 class ="sub">ttms0500/0900 course assignment</h3>
 		</div>
 	</div>
 
@@ -29,11 +30,33 @@
 		<li><a href="https://github.com/SilentProcess/ttms/">GitHub</a></li>
 	</ul>
 </footer>
-
 <script>
+
+var color = 100;
+var direction = 0;
+
 function goToPage() {
 	var currentlocation = window.location.href;
 	window.location = currentlocation + "/build";
+}
+
+function changeContrast() {
+	if(color < 176 && direction == 0) {
+		color = color + 3;
+	} else {
+		color = color - 3;
+		if (color < 90) {
+			direction = 0;
+		} else {
+			direction = 1;
+		}
+	}
+	var element = document.getElementById('bg');
+	element.style.filter = "contrast(" + color.toString() + "%)";
+}
+
+function changeColor() {
+	setInterval(function(){ changeContrast();}, 100);
 }
 </script>
 </body>
