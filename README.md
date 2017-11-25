@@ -57,7 +57,7 @@ eroa muuten toisistaan kuin sen datan perustella, mitä ne hakevat tietokannasta
 json -muotoiseksi ja palautetaan. MIKKO js.   
 
 Loppuhuipennukseksi päätimme vielä luoda taulukon, jossa näkyisi 10 viimeisintä kirjautumisyritystä ip-osoitteineen, 
-autentikointidatoineen höystettynä aikaleimalla. Tätä varten kirjoitimme [get-datarows.php](ajax/get-datarows.php) -skriptin, jonka
+autentikointidatoineen höystettynä aikaleimalla. Tätä varten kirjoitimme [get-datarow.php](ajax/get-datarow.php) -skriptin, jonka
 SQL tiedustelu palautti meille juuri tarvitsemamme datan. Tämän tiedustelun kirjottaiminen olikin tehtävän palvelinosuuden vaikein
 kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tunttuun tapaan muuttaa json -muotoiseksi ja palauttaa. MIKKO js.   
 
@@ -73,3 +73,18 @@ sisältää linkin datan visualisoimissivulle. Rekisteröimme myös uuden domain
 pienen javascriptin, joka css filter -ominaisuutta käyttäen hitaasti vaihtaa aloitussivun taustakuvan kontrastia, joka saa aikaan
 eloisan hehkun.
 
+### Ajan käyttö ja roolit
+
+Tehtävämme jakautuivat melko selkeästi niin, että Matti keskittyä pääasiassa backend -ohjelmointiin ja Mikko frontend -ohjelmointiin. 
+Teimme myös kuitenkin molemmat hiukan molempia, esimerkiksi Mikko suunnitteli suurimmaksi osaksi geo.php -skriptin geoIP osuuden, kun 
+taas Matti esimerkiksi osallistui Lines.js tiedoston taulukon renderöimisfunktion tekemiseen. Työskentelimme monesti yhtä aikaa, ja
+huomasimme tehokkaaksi seuraavan työjärjestyksen: Mikko selvitti ensin, millaista json dataa tarvittiin ja loi esimerkiksi json 
+-tiedoston. Tämän jälkeen Mikko jatkoi tarvittavan .js sivun tekemistä, kun taas Matti ohjelmoi tarvittavan PHP -skriptin. Lopuksi
+molemmat lyötiin yhteen ja korjattiin mahdolliset puutteet.
+
+###### Ajankäyttö:
+
+Nimi | 17.11 | 18.11 | 19.11 | 20.11 | 21.11 | 22.11 | 24.11 | 25.11
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
+Matti | 6h | 4h | 6h | 8h | 5h | 2h | 8h | 5h
+Mikko | xh | xh | xh | xh | xh | xh | xh | xh
