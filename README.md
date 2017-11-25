@@ -16,17 +16,18 @@ avulla voisimme visualisoida kyseistä dataa ja kerätä mielenkiintoista statis
 
 ### Ympäristön rakentaminen
 
-Lyhyen etsinnän jälkeen päätimme käyttää "honeypot" ympäristönämme Cowrie -hunajapurkkia, joka perustuu jo meille ennestään tuttuun
-Kippoon. Cowrie mahdollistaa lokien tallentamisen sekä MySQL -tietokantaan että JSON -tiedostoon. Alustaksemme valitsimme Ubuntu VPS:n.
-[Asensimme](lamp.md) serverille Apachen ja php moduulit myöhempää käyttöä varten.
+Lyhyen etsinnän jälkeen päätimme käyttää "honeypot" ympäristönämme [Cowrie](https://github.com/micheloosterhof/cowrie) -hunajapurkkia,
+joka perustuu jo meille ennestään tuttuun Kippoon. Cowrie mahdollistaa lokien tallentamisen sekä MySQL -tietokantaan että JSON -
+tiedostoon. Alustaksemme valitsimme Ubuntu VPS:n. [Asensimme](lamp.md) serverille Apachen ja php moduulit myöhempää käyttöä varten.
 
-Cowrien [asentaminen](cowrie.md) sujui melko vaivatta. Yritimme ensin [lukea](write-to-database.php) Cowrien json -tiedostoa ja kirjoittaa
+Cowrien [asentaminen](cowrie.md) sujui melko vaivatta. Yritimme ensin [lukea](write-to-database.php) Cowrien json -tiedostoa ja 
+kirjoittaa
 tämän datan MySQL -tietokantaan. Tämä metodi alkoi kuitenkin tuntua meistä hieman vaivalloiselta, siellä cowriessa oli oma MySQL -
 tietokantaan tallennusfunktionaalisuus. Lisäksi kirjoittamamme php scripti joskus kirjoitti JSON tiedoston alkuun NULL -tavuja, joka
 vuorostaan aiheutti sen, että seuraavalla lukukierroksella luku osittain epäonnistui. Näistä syistä päätimme konfiguroida 
 [Cowrien oman](cowrie-mysql.md) tietokantaankirjoittamisfunktionaalisuuden. Tämä toimi moitteetta.  
 
-MIKKO tähän vois kertoa npm asennuksesta.
+MIKKO tähän vois kertoa npm asennuksesta ja reaktista.
 
 ### Käytännön toteutus
 
@@ -34,5 +35,41 @@ Tämän jälkeen olikin aika ryhtyä visualisoimaan dataa. Päätimme aloittaa v
 päivämäärää kohti. Ensiksi kirjoitimme tietokannan [alustusskriptin](init-db.php), joka sijoitettiin kansioon, jota Apache ei pääse 
 lukemaan. Tätä alustusskriptiä tulevat käyttämään kaikki sitä seuraavat php -skriptit. Tämän jälkeen kirjoitimme
 [get-login-attempts](ajax/get-login-attempts.php) -skriptin, joka hakee tietokannan "sessions" -kansiosta kirjautumisten 
-aloitusajankohdat. Ajankohdat yleistetään  Nämä luetaan array -tietorakenteeseen käyttäen kätevää php:n array_count_values funktiota, joka antaa meille suoraan
-tietorakenteen, jonka jokaisen tietueen avaimena on kirjautumispäivämäärä ja arvona kyseisenä päivänä tapahtuneiden kirjautumisten määrä.
+aloitusajankohdat. Ajankohdat yleistetään päivän tarkkuudelle käyttämällä explode -funktiota välilyönnin kohdalla. Tämä data luetaan 
+array -tietorakenteeseen käyttäen kätevää php:n array_count_values funktiota, joka antaa meille suoraan
+tietorakenteen, jonka jokaisen tietueen avaimena on kirjautumispäivämäärä ja arvona kyseisenä päivänä tapahtuneiden kirjautumisten 
+määrä. Tämä array puolestaan kirjoitetaan json -muotoon ja palautetaan. MIKKO tähän js.   
+
+Seuraavana oli vuorossa hunajapurkkiin pyrkivien maantieteellisen sijainnin selvittäminen ja visualisoiminen karttaan. Tätä tehtävää
+varten päätimme käyttää hyödyksi [geoPlugin](http://www.geoplugin.com) API:a. Valitsimme geoPluginin siitä syystä, että heidän 
+palveluihinsa sisältyy php -palvelu, joka kutsuttaessa palauttaa php:lle sopivan array -tietorakenteen. Tieto käsittelevä 
+[geo.php](geo.php) lukee tietokannasta 65 viimeisintä kirjautumisyritystä ja palauttaa niihin liittyvät yksilölliset ip -osoitteet 
+(ei duplikaatteja). Tämän jälkeen kyseiset osoitteet loopataan ja jokaista kohden tehdään geoPlugin kysely. Ensin ajattelimme
+kutsua suoraan tätä skriptiä datan visualisointisivulta. Emme kuitenkaan ottaneet huomioon sitä, että jokaisella sivun latauskerralla
+loimme runsaasti liikennettä geoPlugin API:in. He muistuttivat meitä tästä faktasta antamalle meille tunnin bännit. Tämän jälkeen
+päätimme ajaa geo.php:n cronjobilla joka viides minuutti, ja kirjoittaa tulokset erilliseen json -tiedostoon, jota datan 
+visualisointisivu lukee. Näin luomamme liikenne ei rasita turhaan geoPlugin API:a. Geo.php sijoitettiin kansioon, johon ei voi 
+selata selaimella, jotta voimme olla varmoja siitä, että ylimääräistä liikennettä geoPlugin API:in ei luoda. MIKKO js.   
+
+Mielestämme olisi myös mukavaa nähdä dataa kaikkein eniten käytetyistä salasanoista ja käyttäjänimistä. Niimpä kirjoitimme kaksi
+skriptiä, [get-passwords.php](ajax/get-passwords.php) ja [get-usernames.php](ajax/get-usernames.php). Nämä skriptit eivät käytännössä 
+eroa muuten toisistaan kuin sen datan perustella, mitä ne hakevat tietokannasta. Data luetaan array -tietorakenteesta sekä muutetaan
+json -muotoiseksi ja palautetaan. MIKKO js.   
+
+Loppuhuipennukseksi päätimme vielä luoda taulukon, jossa näkyisi 10 viimeisintä kirjautumisyritystä ip-osoitteineen, 
+autentikointidatoineen höystettynä aikaleimalla. Tätä varten kirjoitimme [get-datarows.php](ajax/get-datarows.php) -skriptin, jonka
+SQL tiedustelu palautti meille juuri tarvitsemamme datan. Tämän tiedustelun kirjottaiminen olikin tehtävän palvelinosuuden vaikein
+kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tunttuun tapaan muuttaa json -muotoiseksi ja palauttaa. MIKKO js.   
+
+Seuraavaan rakennekaavioon olemme kuvanneet serverin käyttämien palveluiden ja tiedostojen suhteita.
+
+###### Rakennekaavio
+
+![arch](pictures/arch.png)
+
+Parempaa käyttäjäkokemusta silmällä pitäen rekisteröimme sivumme käyttäen [FreeDNS](https://freedns.afraid.org/) nimipalvelua, sekä
+kirjoitimme [aloittussivun](landing_page/index.html), jossa luetellaan projektissa käyttämämme oleelliset ulkoiset palvelut ja joka 
+sisältää linkin datan visualisoimissivulle. Rekisteröimme myös uuden domainimme geoPlugin -palveluun. Kirjoitimme aloitussivua varten
+pienen javascriptin, joka css filter -ominaisuutta käyttäen hitaasti vaihtaa aloitussivun taustakuvan kontrastia, joka saa aikaan
+eloisan hehkun.
+
