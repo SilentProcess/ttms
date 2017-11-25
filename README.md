@@ -28,7 +28,7 @@ tietokantaan tallennusfunktionaalisuus. Lisäksi kirjoittamamme php scripti josk
 vuorostaan aiheutti sen, että seuraavalla lukukierroksella luku osittain epäonnistui. Näistä syistä päätimme konfiguroida 
 [Cowrien oman](cowrie-mysql.md) tietokantaankirjoittamisfunktionaalisuuden. Tämä toimi moitteetta.  
 
-MIKKO tähän vois kertoa npm asennuksesta ja reaktista.
+**MIKKO tähän vois kertoa npm asennuksesta ja reaktista.**
 
 ### Käytännön toteutus
 
@@ -39,7 +39,7 @@ lukemaan. Tätä alustusskriptiä tulevat käyttämään kaikki sitä seuraavat 
 aloitusajankohdat. Ajankohdat yleistetään päivän tarkkuudelle käyttämällä explode -funktiota välilyönnin kohdalla. Tämä data luetaan 
 array -tietorakenteeseen käyttäen kätevää php:n array_count_values funktiota, joka antaa meille suoraan
 tietorakenteen, jonka jokaisen tietueen avaimena on kirjautumispäivämäärä ja arvona kyseisenä päivänä tapahtuneiden kirjautumisten 
-määrä. Tämä array puolestaan kirjoitetaan json -muotoon ja palautetaan. MIKKO tähän js.   
+määrä. Tämä array puolestaan kirjoitetaan json -muotoon ja palautetaan. **MIKKO tähän js.**   
 
 Seuraavana oli vuorossa hunajapurkkiin pyrkivien maantieteellisen sijainnin selvittäminen ja visualisoiminen karttaan. Tätä tehtävää
 varten päätimme käyttää hyödyksi [geoPlugin](http://www.geoplugin.com) API:a. Valitsimme geoPluginin siitä syystä, että heidän 
@@ -50,17 +50,17 @@ kutsua suoraan tätä skriptiä datan visualisointisivulta. Emme kuitenkaan otta
 loimme runsaasti liikennettä geoPlugin API:in. He muistuttivat meitä tästä faktasta antamalle meille tunnin bännit. Tämän jälkeen
 päätimme ajaa geo.php:n cronjobilla joka viides minuutti, ja kirjoittaa tulokset erilliseen json -tiedostoon, jota datan 
 visualisointisivu lukee. Näin luomamme liikenne ei rasita turhaan geoPlugin API:a. Geo.php sijoitettiin kansioon, johon ei voi 
-selata selaimella, jotta voimme olla varmoja siitä, että ylimääräistä liikennettä geoPlugin API:in ei luoda. MIKKO js.   
+selata selaimella, jotta voimme olla varmoja siitä, että ylimääräistä liikennettä geoPlugin API:in ei luoda. **MIKKO js.**   
 
 Mielestämme olisi myös mukavaa nähdä dataa kaikkein eniten käytetyistä salasanoista ja käyttäjänimistä. Niimpä kirjoitimme kaksi
 skriptiä, [get-passwords.php](ajax/get-passwords.php) ja [get-usernames.php](ajax/get-usernames.php). Nämä skriptit eivät käytännössä 
 eroa muuten toisistaan kuin sen datan perustella, mitä ne hakevat tietokannasta. Data luetaan array -tietorakenteesta sekä muutetaan
-json -muotoiseksi ja palautetaan. MIKKO js.   
+json -muotoiseksi ja palautetaan. **MIKKO js.**   
 
 Loppuhuipennukseksi päätimme vielä luoda taulukon, jossa näkyisi 10 viimeisintä kirjautumisyritystä ip-osoitteineen, 
 autentikointidatoineen höystettynä aikaleimalla. Tätä varten kirjoitimme [get-datarow.php](ajax/get-datarow.php) -skriptin, jonka
 SQL tiedustelu palautti meille juuri tarvitsemamme datan. Tämän tiedustelun kirjottaiminen olikin tehtävän palvelinosuuden vaikein
-kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tunttuun tapaan muuttaa json -muotoiseksi ja palauttaa. MIKKO js.   
+kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tunttuun tapaan muuttaa json -muotoiseksi ja palauttaa. **MIKKO js.**   
 
 Seuraavaan rakennekaavioon olemme kuvanneet serverin käyttämien palveluiden ja tiedostojen suhteita.
 
