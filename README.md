@@ -70,7 +70,7 @@ Seuraavaan rakennekaavioon olemme kuvanneet serverin käyttämien palveluiden ja
 Parempaa käyttäjäkokemusta silmällä pitäen rekisteröimme sivumme käyttäen [FreeDNS](https://freedns.afraid.org/) nimipalvelua, sekä
 kirjoitimme [aloittussivun](landing_page/index.html), jossa luetellaan projektissa käyttämämme oleelliset ulkoiset palvelut ja joka 
 sisältää linkin datan visualisoimissivulle. Rekisteröimme myös uuden domainimme geoPlugin -palveluun. Kirjoitimme aloitussivua varten
-pienen javascriptin, joka css filter -ominaisuutta käyttäen hitaasti vaihtaa aloitussivun taustakuvan kontrastia, joka saa aikaan
+pienen javascriptin, joka css filter -ominaisuutta käyttäen hitaasti vaihtaa aloitussivun taustakuvan kontrastia, mikä saa aikaan
 eloisan hehkun.
 
 ### Ajankäyttö ja roolit
@@ -88,3 +88,16 @@ Nimi | 17.11 | 18.11 | 19.11 | 20.11 | 21.11 | 22.11 | 24.11 | 25.11
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------
 Matti | 6h | 4h | 6h | 8h | 5h | 2h | 8h | 5h
 Mikko | xh | xh | xh | xh | xh | xh | xh | xh
+
+### Itsearvio
+
+**Matti:**   
+Yleisesti ottaen olen tyytyväinen aikaansaannoksiini. Onnistuin hyödyntymään kurssilla oppimiani taitoja itseäni kiinnostavan 
+kokonaisuuden rakentamiseen. Halutut toiminnallisuudet saatiin kuntoon.   
+PHP koodin määrä jäi loppujen lopuksi hieman suppeaksi. Mahdollisia muita toiminnallisuuksia olisi suuremmalla ajankäytöllä saanut
+implementoitua (vaikka php -pohjainen kirjautuminen, hoidetaan tällä hetkellä .htaccessilla). Sivun ulkoasu jäi myös vielä 
+kehityskelpoiseksi.   
+Kaiken kaikkiaan harjoitustyö oli erittäin mielenkiintoinen projekti, jonka ylläpitämistä saatan jatkaa vielä kurssin jälkeenkin.   
+Arvosanaehdotus: 3,5   
+
+**Mikko:**   
