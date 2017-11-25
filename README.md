@@ -73,7 +73,7 @@ sisältää linkin datan visualisoimissivulle. Rekisteröimme myös uuden domain
 pienen javascriptin, joka css filter -ominaisuutta käyttäen hitaasti vaihtaa aloitussivun taustakuvan kontrastia, joka saa aikaan
 eloisan hehkun.
 
-### Ajan käyttö ja roolit
+### Ajankäyttö ja roolit
 
 Tehtävämme jakautuivat melko selkeästi niin, että Matti keskittyä pääasiassa backend -ohjelmointiin ja Mikko frontend -ohjelmointiin. 
 Teimme myös kuitenkin molemmat hiukan molempia, esimerkiksi Mikko suunnitteli suurimmaksi osaksi geo.php -skriptin geoIP osuuden, kun 
