@@ -65,7 +65,7 @@ Seuraavaan rakennekaavioon olemme kuvanneet serverin käyttämien palveluiden ja
 
 ###### Rakennekaavio
 
-![arch](pictures/arch.png)
+![arch](pictures/arch.PNG)
 
 Parempaa käyttäjäkokemusta silmällä pitäen rekisteröimme sivumme käyttäen [FreeDNS](https://freedns.afraid.org/) nimipalvelua, sekä
 kirjoitimme [aloittussivun](landing_page/index.html), jossa luetellaan projektissa käyttämämme oleelliset ulkoiset palvelut ja joka 
