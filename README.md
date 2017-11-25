@@ -18,7 +18,8 @@ avulla voisimme visualisoida kyseistä dataa ja kerätä mielenkiintoista statis
 
 Lyhyen etsinnän jälkeen päätimme käyttää "honeypot" ympäristönämme [Cowrie](https://github.com/micheloosterhof/cowrie) -hunajapurkkia,
 joka perustuu jo meille ennestään tuttuun Kippoon. Cowrie mahdollistaa lokien tallentamisen sekä MySQL -tietokantaan että JSON -
-tiedostoon. Alustaksemme valitsimme Ubuntu VPS:n. [Asensimme](lamp.md) serverille Apachen ja php moduulit myöhempää käyttöä varten.
+tiedostoon. Alustaksemme valitsimme Ubuntu VPS:n. [Asensimme](lamp.md) serverille Apachen ja php moduulit sekä 
+[MySQL serverin](mysql.md) myöhempää käyttöä varten.
 
 Cowrien [asentaminen](cowrie.md) sujui melko vaivatta. Yritimme ensin [lukea](write-to-database.php) Cowrien json -tiedostoa ja 
 kirjoittaa
