@@ -49,25 +49,4 @@ if (!empty($vals)) {
 
 echo $response;
 
-/*$attempt_array = array();
-
-if (!empty($attempts)) {
-  foreach ($attempts as $attempt) {
-    $srcip = $attempt['srcip'];
-    $timestamp = $attempt['timestamp'];
-    $attempt_array[] = array (
-        'src_ip' => $srcip,
-        'date' => $timestamp,
-    );
-  }
-  $response = json_encode($attempt_array);
-} else {
-  echo '<span style="margin-left: 15px;">ree</span>';
-}
-
-
-// Toimii testattu:
-//header('Content-type: application/json');
-echo $response;*/
-
 ?>
