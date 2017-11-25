@@ -3,7 +3,7 @@
 require_once('PATH_HERE/db-init.php');
 function getIpAddresses($localdb) {
         $ip_addresses = array();
-        $query = "SELECT ip FROM sessions GROUP BY ip ORDER BY MAX(starttime) DESC LIMIT 35";
+        $query = "SELECT ip FROM sessions GROUP BY ip ORDER BY MAX(starttime) DESC LIMIT 65";
         $get_addresses = $localdb->prepare($query);
         $get_addresses->execute();
         while ($row = $get_addresses->fetch(PDO::FETCH_ASSOC)) {
