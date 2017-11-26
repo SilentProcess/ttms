@@ -35,11 +35,14 @@
 var color = 100;
 var direction = 0;
 
+// a simple function for relocating the user to the /build subfolder on button press
 function goToPage() {
 	var currentlocation = window.location.href;
 	window.location = currentlocation + "/build";
 }
 
+// this function changes the contrast of the page background between 175 and 89%. This creates
+// a lively glowing effect.
 function changeContrast() {
 	if(color < 176 && direction == 0) {
 		color = color + 3;
@@ -55,6 +58,9 @@ function changeContrast() {
 	element.style.filter = "contrast(" + color.toString() + "%)";
 }
 
+// after fiddling with the % change of glow and the lenght of the time interval,
+// we settled on 3% change in contrast every 0.1 seconds. This function calls
+// the changeContrast function every 0.1 seconds.
 function changeColor() {
 	setInterval(function(){ changeContrast();}, 100);
 }
