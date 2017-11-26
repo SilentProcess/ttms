@@ -1,7 +1,9 @@
 <?php
 
+// initialize database
 require_once('YOUR_PATH_HERE/db-init.php');
 
+// this function queries the top 10 used passwords and reads them into an array
 function getPassWords($localdb) {
         $passwords = array();
         $query = "SELECT password, COUNT(password) FROM auth GROUP BY password ORDER BY COUNT(password) DESC LIMIT 10";
@@ -19,6 +21,7 @@ $passwords = getPassWords($db);
 
 $passwordarray = array();
 
+// read the data from the array into another array and encode it to json
 if(!empty($passwords)) {
         foreach($passwords as $value) {
                 $passwordarray[] = array (
