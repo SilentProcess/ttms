@@ -1,7 +1,6 @@
 <?php
 //db-init.php
 try {
-        global $db;
         $db = new PDO('mysql:host=localhost;dbname=cowrie;charset=utf8','PASSWORD HERE', 'USERNAME HERE');
 } catch (PDOEXCEPTION $e) {
         echo "Connection failed" .$e->getMessage();
