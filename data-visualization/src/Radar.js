@@ -9,10 +9,12 @@ class Radar extends Component {
          dataProvider: [],
 		 dataProvider2: [],
    }
+	  //this is used to make 2 axios calls compined
    axios.all([
-    axios.get('/radar.json'),
-    axios.get('/radar2.json')
+    axios.get('/ajax/get-usernames.php'),
+    axios.get('/ajax/get-passwords.php')
   ])
+	  //axios.spread is here so both results can be used for differend arrays
     .then(axios.spread((radar,radar2) => {
         this.setState({ dataProvider: radar.data,
 						dataProvider2: radar2.data})
@@ -29,8 +31,8 @@ componentDidMount() {
       // Update the chart dataProvider every 30 seconds
       timer: setInterval(() => {
         axios.all([
-    axios.get('/radar.json'),
-    axios.get('/radar2.json')
+    axios.get('/ajax/get-usernames.php'),
+    axios.get('/ajax/get-passwords.php')
   ])
 	.then(axios.spread((radar,radar2) => {
         this.setState({ dataProvider: radar.data,
@@ -44,11 +46,13 @@ componentDidMount() {
   componentWillUnmount() {
     clearInterval(this.state.timer);
   }
+	//here two differend configuration variables are made
 render() {
     const config = {
 	"type": "radar",
   "theme": "dark",
   "dataProvider": this.state.dataProvider,
+  "color": "#FCDAFF",
   "valueAxes": [ {
     "axisTitleOffset": 20,
     "minimum": 0,
@@ -64,8 +68,10 @@ render() {
   "categoryField": "username",
    "titles": [
 		{
-			"text": "Käyttäjätunnukset",
-			"size": 15
+			"text": "Yleisimmät käyttäjätunnukset",
+			"size": 17,
+			"bold": false,
+			"color": "#F9BAFF",
 		}]
 
 }
@@ -73,6 +79,7 @@ render() {
 	"type": "radar",
   "theme": "dark",
   "dataProvider": this.state.dataProvider2,
+  "color": "#FCDAFF",
   "valueAxes": [ {
     "axisTitleOffset": 20,
     "minimum": 0,
@@ -88,18 +95,21 @@ render() {
   "categoryField": "password",
   "titles": [
 		{
-			"text": "Salasanat",
-			"size": 15,
-			"color": "white"
+			"text": "Yleisimmät salasanat",
+			"size": 17,
+			"color": "#F9BAFF",
+			"bold": false,
 		}]
 
 }
 
 
+
+//both are returned inside the same div
  return (
-      <div className="container">
-        <AmCharts.React style={{ width: "500px", height: "400px" }} options={config} />
-		<AmCharts.React style={{ width: "500px", height: "400px" }} options={config2} />
+      <div className="radarcontainer">
+        <AmCharts.React style={{ width: "50%", height: "400px"  }} options={config} />
+		<AmCharts.React style={{ width: "50%", height: "400px"  }} options={config2} />
       </div>
 	  
     );
