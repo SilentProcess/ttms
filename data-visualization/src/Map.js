@@ -59,7 +59,9 @@ render() {
 	"titles": [
 		{
 			"text": "Kirjautumisyritykset kartalla",
-			"size": 15
+			"size": 17,
+			"bold": false,
+			"color": "#FCDAFF",
 		}]  
 
 
