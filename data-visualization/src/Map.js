@@ -8,7 +8,7 @@ class Map extends Component {
 		this.state = {
          dataProvider: [],
    }
-   axios.get('./map.json') 
+   axios.get('/ajax/geo.json')
     .then(res => {
         this.setState({ dataProvider: res.data });  
 		//console.log(this.state.dataProvider);
@@ -19,14 +19,14 @@ class Map extends Component {
 
 componentDidMount() {
     this.setState({
-      // Update the chart dataProvider every 3 seconds
+      // Update the chart dataProvider every 300 seconds
       timer: setInterval(() => {
         axios.get('./map.json') 
 			.then(res => {
 				this.setState({ dataProvider: res.data });  
 			//console.log(this.state.dataProvider);
 		});
-      }, 30000)
+      }, 300000)
     });
   }
 
@@ -65,7 +65,6 @@ render() {
 
 };
 
-// add events to recalculate map position when the map is moved or zoomed
 
 
  return (
