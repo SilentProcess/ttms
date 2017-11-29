@@ -74,7 +74,7 @@ array -tietorakenteeseen käyttäen kätevää php:n array_count_values funktiot
 tietorakenteen, jonka jokaisen tietueen avaimena on kirjautumispäivämäärä ja arvona kyseisenä päivänä tapahtuneiden kirjautumisten 
 määrä. Tämä array puolestaan kirjoitetaan json -muotoon ja palautetaan. 
 
-Ensimmäisen graafin visualisointiin käytimme AmChartsin viivagraafia, joka rakennettiin [App.js]( ttms/data-visualization/src/App.js )- tiedostoon. Tähän tiedostoon luotiin luokka App. Tämän graafin "tilaan" alustetaan taulukko: dataProvider, johon Axiosia käyttäen haetaan PHP-ohjelman antama data kirjautumisista. Tätä tilaa päivitetään 15 sekunin välein, jotta graafi pysyy ajan tasalla. Tämän lisäksi luodaan render()- funktioon muuttuja "config", johon alustetaan kaikki graafin muotoilut ja asetukset, sekä "dataProvider" kohtaan aikaisemmin säädetty this.state.dataProvider- taulukko. Lopulta render- funktio palauttaa div-elementin jonka luokkana on App, ja jonka sisälle kyseinen graafi tulostuu. Tämä luotu App- luokka "exportataan" ja kutsutaan muiden luokkien kanssa index.js tiedostosta.
+Ensimmäisen graafin visualisointiin käytimme AmChartsin viivagraafia, joka rakennettiin [App.js]( data-visualization/src/App.js )- tiedostoon. Tähän tiedostoon luotiin luokka App. Tämän graafin "tilaan" alustetaan taulukko: dataProvider, johon Axiosia käyttäen haetaan PHP-ohjelman antama data kirjautumisista. Tätä tilaa päivitetään 15 sekunin välein, jotta graafi pysyy ajan tasalla. Tämän lisäksi luodaan render()- funktioon muuttuja "config", johon alustetaan kaikki graafin muotoilut ja asetukset, sekä "dataProvider" kohtaan aikaisemmin säädetty this.state.dataProvider- taulukko. Lopulta render- funktio palauttaa div-elementin jonka luokkana on App, ja jonka sisälle kyseinen graafi tulostuu. Tämä luotu App- luokka "exportataan" ja kutsutaan muiden luokkien kanssa index.js tiedostosta.
 
 
 Seuraavana oli vuorossa hunajapurkkiin pyrkivien maantieteellisen sijainnin selvittäminen ja visualisoiminen karttaan. Tätä tehtävää
@@ -88,7 +88,7 @@ päätimme ajaa geo.php:n cronjobilla joka viides minuutti, ja kirjoittaa tuloks
 visualisointisivu lukee. Näin luomamme liikenne ei rasita turhaan geoPlugin API:a. Geo.php sijoitettiin kansioon, johon ei voi 
 selata selaimella, jotta voimme olla varmoja siitä, että ylimääräistä liikennettä geoPlugin API:in ei luoda.
 
-Kartan graafi luotiin hyvin samalla menetelmällä kun aikaisempi viivagraafi. Erona se, että koko dataProvideria ei täytetä Jsonilla, vaan sen sisältä löytyvä images- taulukko. tämä luotiin tiedostoon [Map.js]( ttms/data-visualization/src/Map.js ). Tämä data päivitetään 5 minuutin välein, jotta se pysyy synkassa cronjobissa määritetyn PHP-ohjelman kanssa. Esimerkki kartan käyttämästä Jsonista:
+Kartan graafi luotiin hyvin samalla menetelmällä kun aikaisempi viivagraafi. Erona se, että koko dataProvideria ei täytetä Jsonilla, vaan sen sisältä löytyvä images- taulukko. tämä luotiin tiedostoon [Map.js]( data-visualization/src/Map.js ). Tämä data päivitetään 5 minuutin välein, jotta se pysyy synkassa cronjobissa määritetyn PHP-ohjelman kanssa. Esimerkki kartan käyttämästä Jsonista:
 ```
 {
       "scale": 0.5,
@@ -105,20 +105,20 @@ skriptiä, [get-passwords.php](ajax/get-passwords.php) ja [get-usernames.php](aj
 eroa muuten toisistaan kuin sen datan perustella, mitä ne hakevat tietokannasta. Data luetaan array -tietorakenteesta sekä muutetaan
 json -muotoiseksi ja palautetaan.
 
-Tämän visualisointiin päätimme käyttää AmChartsin radar- graafeja. Koska tarvitsimme kaksi samanlaista graafia, alustimme ne samaan tiedostoon [Radar.js]( ttms/data-visualization/src/Radar.js ). Tässä tiedostossa piti hakea erikseen kaksi eri Jsonia, joka onnistui näppärästi Axiosin avulla. Jsonit tallennettiin erillisiin taulukoihin, joista ne annettiin parametreiksi erillisille "config" muuttujille. Molemmat graafit renderöitiin saman div-elementin sisälle. Myös nämä gaafit päivittyvät itsekseen annetun aikavälin mukaan.
+Tämän visualisointiin päätimme käyttää AmChartsin radar- graafeja. Koska tarvitsimme kaksi samanlaista graafia, alustimme ne samaan tiedostoon [Radar.js]( data-visualization/src/Radar.js ). Tässä tiedostossa piti hakea erikseen kaksi eri Jsonia, joka onnistui näppärästi Axiosin avulla. Jsonit tallennettiin erillisiin taulukoihin, joista ne annettiin parametreiksi erillisille "config" muuttujille. Molemmat graafit renderöitiin saman div-elementin sisälle. Myös nämä gaafit päivittyvät itsekseen annetun aikavälin mukaan.
 
 Loppuhuipennukseksi päätimme vielä luoda taulukon, jossa näkyisi 10 viimeisintä kirjautumisyritystä ip-osoitteineen, 
 autentikointidatoineen höystettynä aikaleimalla. Tätä varten kirjoitimme [get-datarow.php](ajax/get-datarow.php) -skriptin, jonka
 SQL tiedustelu palautti meille juuri tarvitsemamme datan. Tämän tiedustelun kirjottaiminen olikin tehtävän palvelinosuuden vaikein
 kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tuttuun tapaan muuttaa json -muotoiseksi ja palauttaa. 
 
-Javascripti tämän visualisointiin luotiin [Lines.js]( ttms/data-visualization/src/Lines.js ) tiedostoon. Jälleen kerran samat Axios kyselyt hakevat tarvitsemamme datan PHP-ohjelmalta. Render functioon luotiin datan palauttamiseen table- taulukko, johon rivit saatiin map- funktiolla linesArray- taulukosta.
+Javascripti tämän visualisointiin luotiin [Lines.js]( data-visualization/src/Lines.js ) tiedostoon. Jälleen kerran samat Axios kyselyt hakevat tarvitsemamme datan PHP-ohjelmalta. Render functioon luotiin datan palauttamiseen table- taulukko, johon rivit saatiin map- funktiolla linesArray- taulukosta.
 
 #### Muut käytetyt tiedostot
 
-Käytetty tyylitiedosto: [index.css]( ttms/data-visualization/src/index.css )  
-[index.html]( ttms/data-visualization/public/index.html )  
-[index.js]( ttms/data-visualization/src/index.js )  
+Käytetty tyylitiedosto: [index.css]( data-visualization/src/index.css )  
+[index.html]( data-visualization/public/index.html )  
+[index.js]( data-visualization/src/index.js )  
 
 Seuraavaan rakennekaavioon olemme kuvanneet serverin käyttämien palveluiden ja tiedostojen suhteita.
 
