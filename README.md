@@ -105,7 +105,7 @@ skriptiä, [get-passwords.php](ajax/get-passwords.php) ja [get-usernames.php](aj
 eroa muuten toisistaan kuin sen datan perustella, mitä ne hakevat tietokannasta. Data luetaan array -tietorakenteesta sekä muutetaan
 json -muotoiseksi ja palautetaan.
 
-Tämän visualisointiin päätimme käyttää AmChartsin radar- graafeja. Koska tarvitsimme kaksi samanlaista graafia, alustimme ne samaan tiedostoon [Radar.js]( ttms/data-visualization/src/Radar.js ). Tässä tiedostossa piti hakea erikseen kaksi eri Jsonia, joka onnistui näppärästi Axiosin avulla. Jsonit tallennettiin erillisiin taulukoihin, joista ne annettiin parametreiksi erillisille "config" muuttujille. Molemmat graafit renderöitiin saman div-elementin sisälle.
+Tämän visualisointiin päätimme käyttää AmChartsin radar- graafeja. Koska tarvitsimme kaksi samanlaista graafia, alustimme ne samaan tiedostoon [Radar.js]( ttms/data-visualization/src/Radar.js ). Tässä tiedostossa piti hakea erikseen kaksi eri Jsonia, joka onnistui näppärästi Axiosin avulla. Jsonit tallennettiin erillisiin taulukoihin, joista ne annettiin parametreiksi erillisille "config" muuttujille. Molemmat graafit renderöitiin saman div-elementin sisälle. Myös nämä gaafit päivittyvät itsekseen annetun aikavälin mukaan.
 
 Loppuhuipennukseksi päätimme vielä luoda taulukon, jossa näkyisi 10 viimeisintä kirjautumisyritystä ip-osoitteineen, 
 autentikointidatoineen höystettynä aikaleimalla. Tätä varten kirjoitimme [get-datarow.php](ajax/get-datarow.php) -skriptin, jonka
