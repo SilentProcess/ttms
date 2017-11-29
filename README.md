@@ -114,6 +114,12 @@ kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tuttuun tapaan
 
 Javascripti tämän visualisointiin luotiin [Lines.js]( ttms/data-visualization/src/Lines.js ) tiedostoon. Jälleen kerran samat Axios kyselyt hakevat tarvitsemamme datan PHP-ohjelmalta. Render functioon luotiin datan palauttamiseen table- taulukko, johon rivit saatiin map- funktiolla linesArray- taulukosta.
 
+#### Muut käytetyt tiedostot
+
+Käytetty tyylitiedosto: [index.css]( ttms/data-visualization/src/index.css )  
+[index.html]( ttms/data-visualization/public/index.html )  
+[index.js]( ttms/data-visualization/src/index.js )  
+
 Seuraavaan rakennekaavioon olemme kuvanneet serverin käyttämien palveluiden ja tiedostojen suhteita.
 
 ###### Rakennekaavio
