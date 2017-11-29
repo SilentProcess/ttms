@@ -19,7 +19,7 @@ class Lines extends Component {
 	
 	componentDidMount() {
     this.setState({
-      // Update the chart dataProvider every 3 seconds
+      // Update the chart dataProvider every 30 seconds
       timer: setInterval(() => {
         axios.get('/ajax/get-datarow.php') 
 			.then(res => {
