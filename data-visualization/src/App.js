@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import AmCharts from "@amcharts/amcharts3-react";
-import './App.css';
 import axios from 'axios';
 
-// Generate random data
 
 
 // Component which contains the dynamic state for the chart
@@ -13,8 +11,10 @@ class App extends Component {
 		this.state = {
          dataProvider: [],
    }
-   axios.get('./test.json') 
+  //axios call to get-login-attempts.php for the data
+   axios.get('/ajax/get-login-attempts.php') 
     .then(res => {
+	   // set the resulting data in dataProcider array
         this.setState({ dataProvider: res.data });  
 		//console.log(this.state.dataProvider);
    });
@@ -26,9 +26,9 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      // Update the chart dataProvider every 3 seconds
+      // Update the chart dataProvider every 15 seconds
       timer: setInterval(() => {
-        axios.get('./test.json') 
+        axios.get('/ajax/get-login-attempts.php') 
 			.then(res => {
 				this.setState({ dataProvider: res.data });  
 	//	console.log(this.state.dataProvider);
@@ -44,12 +44,12 @@ class App extends Component {
   }
 
   render() {
-	  
+	  //configuration for the chart
     const config = {
       "type": "serial",
       "theme": "dark",
-      "marginRight": 40,
-      "marginLeft": 40,
+      "marginRight": 80,
+      "marginLeft": 80,
       "autoMarginOffset": 20,
       "mouseWheelZoomEnabled": true,
 	  "zoomOutOnDataUpdate": false,
@@ -106,28 +106,26 @@ class App extends Component {
         "valueLineAlpha":0.2,
         "valueZoomable": true
       },
-      "valueScrollbar":{
-        "oppositeAxis": false,
-        "offset":50,
-        "scrollbarHeight":10
-      },
       "categoryField": "date",
       "categoryAxis": {
         "parseDates": true,
         "dashLength": 1,
         "minorGridEnabled": true
       },
+	    // here the data used for the array is defined
       "dataProvider": this.state.dataProvider,
 	  "titles": [
 		{
 			"text": "Kirjautumisyritykset/päivä",
-			"size": 15
+			"size": 17,
+			"color": "#F9BAFF",
+			"bold": false
 		}]  
 	  
     };
 	
 	
-
+//returns the graph inside a div
     return (
       <div className="App">
         <AmCharts.React 
@@ -139,5 +137,5 @@ class App extends Component {
   }
   
 }
-
+//exports the class to be used in index.js
 export default App;
