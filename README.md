@@ -98,7 +98,10 @@ Kartan graafi luotiin hyvin samalla menetelmällä kun aikaisempi viivagraafi. E
 	  "type": "circle"
     }
 ```
-Tässä "scale" ja "type" ovat vakiomuotoiluja kartan merkinnöille, mutta ne täytyy silti laittaa jokaiseen kohtaan erikseen. loput tiedot saadaan geopluginin palauttamasta datasta.
+Tässä "scale" ja "type" ovat vakiomuotoiluja kartan merkinnöille, mutta ne täytyy silti laittaa jokaiseen kohtaan erikseen. loput tiedot saadaan geopluginin palauttamasta datasta.   
+
+Asettamalla hiiri kirjautumisyrityksiä edustavien kartalla näkyvien palleroiden päälle, voidaan nähdä kyseisestä maantieteellisestä
+sijainnista saapuneen kirjautumisyrityksen IP-osoite, maatunnus ja, mikäli kyseinen data on saatavilla, kaupunging nimi.
 
 Mielestämme olisi myös mukavaa nähdä dataa kaikkein eniten käytetyistä salasanoista ja käyttäjänimistä. Niimpä kirjoitimme kaksi
 skriptiä, [get-passwords.php](ajax/get-passwords.php) ja [get-usernames.php](ajax/get-usernames.php). Nämä skriptit eivät käytännössä 
