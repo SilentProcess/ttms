@@ -114,6 +114,14 @@ kohta, sillä kun data saatiin array -rakenteeseen, se oli helppo tuttuun tapaan
 
 Javascripti tämän visualisointiin luotiin [Lines.js]( data-visualization/src/Lines.js ) tiedostoon. Jälleen kerran samat Axios kyselyt hakevat tarvitsemamme datan PHP-ohjelmalta. Render functioon luotiin datan palauttamiseen table- taulukko, johon rivit saatiin map- funktiolla linesArray- taulukosta.
 
+Lopuksi projektista tehtiin optimoitu "tuotanto"- versio. tämä tapahtuu ajamalla ```npm run build``` Tämä suorittaa package.json tiedostossa määritetyn ```react scripts build```scriptin. Tämän määritys [tekijöiden](https://github.com/facebookincubator/create-react-app/blob/master/README.md#getting-started) mukaan:
+
+	Builds the app for production to the build folder.
+	It correctly bundles React in production mode and optimizes the build for the best performance.
+
+	The build is minified and the filenames include the hashes.
+	By default, it also includes a service worker so that your app loads from local cache on future visits.
+
 #### Muut käytetyt tiedostot
 
 Käytetty tyylitiedosto: [index.css]( data-visualization/src/index.css )  
