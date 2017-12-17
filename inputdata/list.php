@@ -21,6 +21,6 @@ $inputarray = array();
 // into an array
 foreach ($data as $list) {
         $hash = $list['session'];
-        echo "<a href='data.php?id={$hash}'>{$hash}</a>" ."   "  .$list['count'] ."  " .$list['timestamp'] ."<br>";
+        echo "<a href='index.php?id={$hash}'>{$hash}</a>" ."   "  .$list['count'] ."  " .$list['timestamp'] ."<br>";
 }
 ?>
