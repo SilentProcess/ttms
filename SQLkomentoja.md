@@ -5,7 +5,10 @@ FROM input
 INNER JOIN auth ON input.session=auth.session 
 GROUP BY input.session, auth.timestamp 
 HAVING count>3 
-ORDER BY MAX(auth.timestamp);
+ORDER BY MAX(auth.timestamp) DESC;
+// listaa ajan mukaan uusin ensin, tai
+ORDER BY count DESC;
+// listaa komentojen lukumäärän mukaan, suurin ensin
 ```
 Tuo listaa kaikki eri sessio hashit sekä niiden tekemien inputtien lukumäärän sekä hakee auth logista session timestampin  
 listaa vain yli 3 komentoa käyttäneet  
