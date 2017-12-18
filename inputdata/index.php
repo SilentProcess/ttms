@@ -1,9 +1,18 @@
+<html>
+<body>
+<head>
+<link rel="stylesheet" href="style.css" 
+type="text/css" media="all" />
+</head>
 <?php
 // initialize database
-require_once('db-init.php');
-
-include('list.php');
-
+require_once('/home/httpserver/db-init.php');
+?>
+<nav>
+<?php include('list.php');?>
+</nav>
+<section>
+<?php
 function getListData($localdb) {
         $hash = isset($_GET['id']) ? $_GET['id'] : '';
         $data = array();
@@ -15,14 +24,13 @@ function getListData($localdb) {
         }
         return $data;
 }
-
-
 $data = getListData($db);
-
 //var_dump($data);
-
 $inputarray = array();
 foreach ($data as $input) {
         echo $input['input'] ."<br>";
 }
 ?>
+</section>
+</body>
+</html>
