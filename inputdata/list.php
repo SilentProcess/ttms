@@ -12,15 +12,36 @@ function createList($localdb) {
         }
         return $data;
 }
-
-
 $data = createList($db);
 //var_dump($data);
-$inputarray = array();
 // separate date-month-year and hour-minute-second parts and read the day-month-year parts
 // into an array
-foreach ($data as $list) {
-        $hash = $list['session'];
-        echo "<a href='index.php?id={$hash}'>{$hash}</a>" ."   "  .$list['count'] ."  " .$list['timestamp'] ."<br>";
+
+function printData($datalist) {
+        foreach ($datalist as $list) {
+                echo "<tr><td><a href='index.php?id={$list['session']}'>{$list['session']}</a></td>"  ."<td>{$list['count']}</td>" ."<td>{$list['timestamp']}</td></tr>";
+        }
 }
+
+$html_start = <<<HTMLEND
+        <!DOCTYPE html>
+        <html>
+        <body>
+        <table>
+        <tr>
+                <th>session</th>
+                <th>inputs</th>
+                <th>timestamp</th>
+        </tr>
+HTMLEND;
+
+$html_end = <<<HTMLEND
+        </table>
+        </body>
+        </html>
+HTMLEND;
+
+echo $html_start;
+printData($data);
+echo $html_end;
 ?>
