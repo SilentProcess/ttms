@@ -6,7 +6,7 @@ type="text/css" media="all" />
 </head>
 <?php
 // initialize database
-require_once('/home/httpserver/db-init.php');
+require_once('db-init.php');
 ?>
 <nav>
 <?php include('list.php');?>
