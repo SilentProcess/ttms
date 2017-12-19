@@ -28,7 +28,7 @@ $data = getListData($db);
 //var_dump($data);
 $inputarray = array();
 foreach ($data as $input) {
-        echo "<p>{$input['input']}</p>" ."<br>";
+        echo "<p>{$input['input']}</p>";
 }
 ?>
 </section>
