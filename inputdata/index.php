@@ -1,7 +1,7 @@
 <html>
 <body>
 <head>
-<link rel="stylesheet" href="style.css" 
+<link rel="stylesheet" href="style.css"
 type="text/css" media="all" />
 </head>
 <?php
@@ -28,7 +28,7 @@ $data = getListData($db);
 //var_dump($data);
 $inputarray = array();
 foreach ($data as $input) {
-        echo $input['input'] ."<br>";
+        echo "<p>{$input['input']}</p>" ."<br>";
 }
 ?>
 </section>
