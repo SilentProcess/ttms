@@ -15,6 +15,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "webpack": "^3.8.1"
   }
 }
