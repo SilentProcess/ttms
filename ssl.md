@@ -43,3 +43,13 @@ Allow https through firewall:
 ```
 ~$ ufw allow 443
 ```
+Redirect http to https:
+
+```
+NameVirtualHost *:80
+<VirtualHost *:80>
+   ServerName {insert site name}
+   DocumentRoot /var/www/html 
+   Redirect permanent / https://{insert site name}
+</VirtualHost>
+```
