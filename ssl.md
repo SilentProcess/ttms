@@ -48,8 +48,13 @@ Redirect http to https:
 ```
 NameVirtualHost *:80
 <VirtualHost *:80>
-   ServerName {insert site name}
+   ServerName {insert domain name}
+   ServerAlias {insert ip}
    DocumentRoot /var/www/html 
    Redirect permanent / https://{insert site name}
 </VirtualHost>
+
+<VirtualHost *:443>
+ServerName {insert domain name}
+ServerAlias {insert ip}
 ```
